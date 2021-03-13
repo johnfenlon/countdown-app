@@ -1,3 +1,8 @@
+const daysEl = document.getElementById('days');
+const hours = document.getElementById('hours');
+const minutes = document.getElementById('mins');
+const seconds = document.getElementById('secs');
+
 const pubsOpen = '21 June 2021';
 
 function countdown() {
@@ -8,10 +13,20 @@ function countdown() {
 
     const days = Math.floor(totalSeconds / 3600 / 24);
     const hours = Math.floor(totalSeconds / 3600) % 24;
-    const minutes = Math.floor(totalSeconds / 60) % 60;
-    const seconds = Math.floor(totalSeconds) % 60;
+    const mins = Math.floor(totalSeconds / 60) % 60;
+    const secs = Math.floor(totalSeconds) % 60;
 
-    console.log(days, hours, minutes, seconds);
+    // console.log(days, hours, minutes, seconds);
+
+    daysEl.innerHTML = days;
+    hoursEl.innerHTML = formatTime(hours);
+    minsEl.innerHTML = formatTime(mins);
+    secondsEl.innerHTML = formatTime(secs);
+
+}
+
+function formatTime(time) { 
+    return time < 10 ? (`0${time}`) : time;
 }
 
 countdown();
